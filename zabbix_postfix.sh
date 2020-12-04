@@ -1,24 +1,20 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # DEPS: /usr/sbin/pflogsumm
-# DEPS: pygtail.py
 # DEPS:	bc
 
-# For Debian/Ubuntu
-[ -f /var/log/mail.log ] && MAILLOG=/var/log/mail.log
-# For RHEL/Centos
-[ -f /var/log/maillog ] && MAILLOG=/var/log/maillog
+# Get mailcow-docker logs and feed them into zabbix
 
-FPOS=/tmp/zabbix-postfix-offset.dat
+DOCKER_IMAGE=postfix-mailcow
+TIME=24h
 PFLOGSUMM=/usr/sbin/pflogsumm
-LOGTAIL=/usr/local/sbin/pygtail.py
 ZABBIX_CONF=/etc/zabbix/zabbix_agentd.conf
 
 function zsend {
   /usr/bin/zabbix_sender -c $ZABBIX_CONF -k $1 -o $2
 }
 
-DATA="$(${LOGTAIL} -o ${FPOS} ${MAILLOG} | ${PFLOGSUMM} -h 0 -u 0 --bounce_detail=0 --deferral_detail=0 --reject_detail=0 --no_no_msg_size --smtpd_warning_detail=0)"
+DATA="$(docker logs --since ${TIME} $(docker ps -qf name=${DOCKER_IMAGE}) | ${PFLOGSUMM} -h 0 -u 0 --bounce_detail=0 --deferral_detail=0 --reject_detail=0 --no_no_msg_size --smtpd_warning_detail=0)"
 
 zsend pf.received $(echo -e "${DATA}" | grep -m 1 received | cut -f1 -d"r")
 zsend pf.delivered $(echo -e "${DATA}" | grep -m 1 delivered | cut -f1 -d"d")

@@ -9,9 +9,9 @@
     </groups>
     <templates>
         <template>
-            <template>Template Postfix Services</template>
-            <name>Template Postfix Services</name>
-            <description>Template for postfix services monitoration</description>
+            <template>Template Postfix-docker Services</template>
+            <name>Template Postfix-docker Services</name>
+            <description>Template for postfix(in docker container) services monitoring</description>
             <groups>
                 <group>
                     <name>Templates</name>
