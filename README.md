@@ -30,7 +30,7 @@ On client:
     chgrp zabbix /etc/zabbix/zabbix_agentd.d/zabbix_postfix.conf
     chmod 640 /etc/zabbix/zabbix_agentd.d/zabbix_postfix.conf
     
-    systemct restart zabbix-agent
+    systemctl restart zabbix-agent
     
  * Add crontab entry
  
