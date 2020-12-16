@@ -16,6 +16,8 @@ On client:
     yum install https://repo.zabbix.com/zabbix/4.2/rhel/6/x86_64/zabbix-release-4.2-1.el6.noarch.rpm
     yum install postfix-perl-scripts bc zabbix-agent zabbix-sender
 
+    mkdir -p /etc/zabbix/scripts/
+    
     cp zabbix_postfix.sh /etc/zabbix/scripts/
     chmod 750 /etc/zabbix/scripts/zabbix_postfix.sh
     chgrp zabbix /etc/zabbix/scripts/zabbix_postfix.sh
