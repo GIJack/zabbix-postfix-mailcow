@@ -5,10 +5,10 @@
 
 # Get mailcow-docker logs and feed them into zabbix
 
-DOCKER_IMAGE=postfix-mailcow
+DOCKER_IMAGE=mailcowdockerized-postfix-mailcow-1
 TIME=24h
 PFLOGSUMM=/usr/sbin/pflogsumm
-ZABBIX_CONF=/etc/zabbix/zabbix_agentd.conf
+ZABBIX_CONF=/etc/zabbix/zabbix_agent2.conf
 
 function zsend {
   /usr/bin/zabbix_sender -c $ZABBIX_CONF -k $1 -o $2
