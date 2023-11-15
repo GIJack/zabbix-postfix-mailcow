@@ -9,9 +9,9 @@
     </groups>
     <templates>
         <template>
-            <template>Template Postfix-docker Services</template>
-            <name>Template Postfix-docker Services</name>
-            <description>Template for postfix(in docker container) services monitoring</description>
+            <template>Template Postfix Services</template>
+            <name>Template Postfix Services</name>
+            <description>Template for postfix services monitoration</description>
             <groups>
                 <group>
                     <name>Templates</name>
@@ -369,7 +369,7 @@
                 </item>
                 <item>
                     <name>Postfix queue</name>
-                    <type>0</type>
+                    <type>2</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
