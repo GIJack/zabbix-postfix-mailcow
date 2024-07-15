@@ -2,7 +2,8 @@
 Description=update zabbix-postfix-mailcow every 30 seconds
 
 [Timer]
-OnActiveSec=30
+OnBootSec=30sec
+OnUnitActiveSec=30sec
 Persistent=true
 
 [Install]
