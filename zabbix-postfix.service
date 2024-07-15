@@ -1,0 +1,9 @@
+[Unit]
+Description=Feed zabbix-postfix-mailcow data from docker into zabbix
+
+[Service]
+Type=oneshot
+User=zabbix
+Group=zabbix
+ExecStart=/etc/zabbix/scripts/zabbix_postfix.sh
+

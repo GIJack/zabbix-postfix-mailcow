@@ -1,0 +1,10 @@
+[Unit]
+Description=update zabbix-postfix-mailcow every 30 seconds
+
+[Timer]
+OnActiveSec=30
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+
